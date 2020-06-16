@@ -1,65 +1,55 @@
-// Empty JS for your own code to be here
 
-$ = jQuery;
-var maxHealth = 500,
-  curHealth = maxHealth;
-$('.total').html(maxHealth + "/" + maxHealth);
-$(".health-bar-text").html("100%");
-$(".health-bar").css({
-  "width": "100%"
-});
-$(".add-damage").click(function() {
-  if (curHealth == 0) {
-    $('.message-box').html("Is this the end??");
-  } else {
-    var damage = Math.floor((Math.random() * 100) + 50);
-    $(".health-bar-red, .health-bar").stop();
-    curHealth = curHealth - damage;
-    if (curHealth < 0) {
-      curHealth = 0;
-      restart();
-    } else {
-      $('.message-box').html("You took " + damage + " points of damage!");
-    }
-    applyChange(curHealth);
-  }
-});
-$(".add-heal").click(function() {
-  if (curHealth == maxHealth) {
-    $('.message-box').html("You are already at full health");
-  } else {
-    var heal = Math.floor((Math.random() * 100) + 5);
-    $(".health-bar-red, .health-bar-blue, .health-bar").stop();
-    curHealth = curHealth + heal;
-    if (curHealth > maxHealth) {
-      curHealth = maxHealth;
-      $('.message-box').html("You're at full health");
-    } else if (curHealth == 0) {
-      $('.message-box').html("Miraculously! You regained your health by " + heal + " points and get back on to your feet!");
-    } else {
-      $('.message-box').html("You regained your health by " + heal + " points!");
-    }
-    applyChange(curHealth);
-  }
-});
+(function () {
+  // to get the value of an input: document.getElementById("element-id").value
 
-function applyChange(curHealth) {
-  var a = curHealth * (100 / maxHealth);
-  $(".health-bar-text").html(Math.round(a) + "%");
-  $(".health-bar-red").animate({
-    'width': a + "%"
-  }, 700);
-  $(".health-bar").animate({
-    'width': a + "%"
-  }, 500);
-  $(".health-bar-blue").animate({
-    'width': a + "%"
-  }, 300);
-  $('.total').html(curHealth + "/" + maxHealth);
-}
+  document.getElementById("validBtn1").addEventListener("click", function () {
+    
+    let race = document.getElementById("races1");
+    let strrace = race.options[race.selectedIndex].value;
+    let item = document.getElementById("items1");
+    let stritem = item.options[item.selectedIndex].value;
+    perso1 = new Person(
+      document.getElementById("name1").value,
+      strrace,
+      stritem
+    );
+    
+    document.getElementById("validBtn1").classList.add("btn-success");
+    document.getElementById("validBtn1").classList.remove("btn-primary");
+    document.getElementById("form1").classList.add("hide");
+    document.getElementById("table1").classList.remove("hide");
+    document.getElementById("tdname1").innerHTML = perso1.name;
+    document.getElementById("tditem1").innerHTML = perso1.item;
+    document.getElementById("tdrace1").innerHTML = perso1.race;
 
-function restart() {
-  //Was going to have a game over/restart function here. 
-  $('.health-bar-red, .health-bar');
-  $('.message-box').html("You've been knocked down! Thing's are looking bad.");
-}
+  });
+
+  document.getElementById("validBtn2").addEventListener("click", function () {
+    perso2 = new Person(
+      document.getElementById("name2"),
+      document.getElementById("races2"),
+      document.getElementById("items2")
+    );
+
+    document.getElementById("validBtn2").classList.add("btn-success");
+
+    document.getElementById("validBtn2").classList.remove("btn-primary");
+  });
+
+  document.getElementById("hit2").addEventListener("click", function () {
+    let health = document.getElementById("health");
+    health.value -= 10; //Or whatever you want to do with it.
+  });
+  document.getElementById("hit").addEventListener("click", function () {
+    let health2 = document.getElementById("health2");
+    health2.value -= 10; //Or whatever you want to do with it.
+  });
+  document.getElementById("heal").addEventListener("click", function () {
+    let health = document.getElementById("health");
+    health.value += 10; //Or whatever you want to do with it.
+  });
+  document.getElementById("heal2").addEventListener("click", function () {
+    let health2 = document.getElementById("health2");
+    health2.value += 10; //Or whatever you want to do with it.
+  });
+})();

@@ -32,13 +32,8 @@
 						<div class="row">
 							<div class="col-md-4">
 								<h3>Player 1</h3>
-								<div class="health-box">
-									<div class="health-bar-red"></div>
-									<div class="health-bar-blue"></div>
-									<div class="health-bar"></div>
-									<div class="health-bar-text"></div>
-								  </div>
-								<ul class="nav">
+								<progress class="progress-bar-green" id="health" value="100" max="100"></progress>
+								<ul id="form1" class="nav">
 									<li class="nav-item">
 										<label for="name1">Choose a name:</label>
 										<input type="text" id="name1" placeholder="character's name">
@@ -46,26 +41,26 @@
 									<li class="nav-item">
 										<label for="items1">Choose a item:</label>
 										<select id="items1" name="items1">
-											<option value="boots">Boots</option>
-											<option value="staff">Staff</option>
-											<option value="sword">Sword</option>
-											<option value="bow">Bow</option>
+											<option value="Boots">Boots</option>
+											<option value="Staff">Staff</option>
+											<option value="Sword">Sword</option>
+											<option value="Bow">Bow</option>
 										</select>
 									</li>
 									<li class="nav-item">
 										<label for="races1">Choose a race:</label>
 										<select id="races1" name="races1">
-											<option value="humans">Humans</option>
-											<option value="orcs">Orcs</option>
-											<option value="elves">Elves</option>
-											<option value="vampires">Vampires</option>
+											<option value="Humans">Humans</option>
+											<option value="Orcs">Orcs</option>
+											<option value="Elves">Elves</option>
+											<option value="Vampires">Vampires</option>
 										</select>
 										<button type="button" class="btn btn-primary" id="validBtn1">
 											Valider
 										</button>
 									</li>
 								</ul>
-								<table class="table table-sm table-bordered">
+								<table id="table1" class="table table-sm table-bordered hide">
 									<thead>
 										<tr>
 											<th>
@@ -81,13 +76,13 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td>
+											<td id="tdname1">
 
 											</td>
-											<td>
+											<td id="tditem1">
 
 											</td>
-											<td>
+											<td id="tdrace1">
 
 											</td>
 										</tr>
@@ -95,17 +90,17 @@
 								</table>
 								<ul class="nav">
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="hit1">
+										<button type="button" class="btn btn-primary" id="hit">
 											Hit
 										</button>
 									</li>
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="heal1">
+										<button type="button" class="btn btn-primary" id="heal">
 											Heal
 										</button>
 									</li>
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="yield1">
+										<button type="button" class="btn btn-primary" id="yield">
 											Yield
 										</button>
 									</li>
@@ -121,12 +116,7 @@
 							</div>
 							<div class="col-md-4">
 								<h3>Player 2</h3>
-								<div class="health-box">
-									<div class="health-bar-red"></div>
-									<div class="health-bar-blue"></div>
-									<div class="health-bar"></div>
-									<div class="health-bar-text"></div>
-								  </div>
+								<progress class="progress-bar-green" id="health2" value="100" max="100"></progress>
 								<ul class="nav">
 									<li class="nav-item">
 										<label for="name2">Choose a name:</label>
@@ -149,12 +139,12 @@
 											<option value="elves">Elves</option>
 											<option value="vampires">Vampires</option>
 										</select>
-										<button type="button" class="btn btn-primary" id="validBtn1">
+										<button type="button" class="btn btn-primary" id="validBtn2">
 											Valider
 										</button>
 									</li>
 								</ul>
-								<table class="table table-sm table-bordered">
+								<table class="table table-sm table-bordered hide">
 									<thead>
 										<tr>
 											<th>
@@ -184,7 +174,7 @@
 								</table>
 								<ul class="nav">
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary add-damage" id="hit2">
+										<button type="button" class="btn btn-primary add-damage2" id="hit2">
 											Hit
 										</button>
 									</li>
@@ -209,9 +199,9 @@
 		</div>
 	</div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	
 	<script src="js/scripts.js"></script>
+	<script src="js/character.js"></script>
 </body>
 
 </html>
