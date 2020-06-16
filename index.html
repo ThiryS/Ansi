@@ -32,6 +32,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								<h3>Player 1</h3>
+								<span id="life1">100/100</span>
 								<progress class="progress-bar-green" id="health" value="100" max="100"></progress>
 								<ul id="form1" class="nav">
 									<li class="nav-item">
@@ -41,19 +42,19 @@
 									<li class="nav-item">
 										<label for="items1">Choose a item:</label>
 										<select id="items1" name="items1">
-											<option value="Boots">Boots</option>
-											<option value="Staff">Staff</option>
-											<option value="Sword">Sword</option>
-											<option value="Bow">Bow</option>
+											<option value="boots">Boots</option>
+											<option value="staff">Staff</option>
+											<option value="sword">Sword</option>
+											<option value="bow">Bow</option>
 										</select>
 									</li>
 									<li class="nav-item">
 										<label for="races1">Choose a race:</label>
 										<select id="races1" name="races1">
-											<option value="Humans">Humans</option>
-											<option value="Orcs">Orcs</option>
-											<option value="Elves">Elves</option>
-											<option value="Vampires">Vampires</option>
+											<option value="humans">Humans</option>
+											<option value="orcs">Orcs</option>
+											<option value="elves">Elves</option>
+											<option value="vampires">Vampires</option>
 										</select>
 										<button type="button" class="btn btn-primary" id="validBtn1">
 											Valider
@@ -86,21 +87,32 @@
 
 											</td>
 										</tr>
+										<tr>
+											<td >
+
+											</td>
+											<td id="tditemdesc1">
+
+											</td>
+											<td id="tdracedesc1">
+
+											</td>
+										</tr>
 									</tbody>
 								</table>
-								<ul class="nav">
-									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="hit">
+								<ul id="btn1" class="nav hide">
+									<li class="nav-item ">
+										<button type="button" class="btn btn-primary actbtn" id="hit" disabled>
 											Hit
 										</button>
 									</li>
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="heal">
+										<button type="button" class="btn btn-primary actbtn" id="heal" disabled>
 											Heal
 										</button>
 									</li>
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="yield">
+										<button type="button" class="btn btn-primary actbtn" id="yield" disabled>
 											Yield
 										</button>
 									</li>
@@ -111,13 +123,16 @@
 									log
 								</h2>
 								<div class="jumbotron card card-block">
+									<ul id="log">
 
+									</ul>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<h3>Player 2</h3>
+								<span id="life2">100/100</span>
 								<progress class="progress-bar-green" id="health2" value="100" max="100"></progress>
-								<ul class="nav">
+								<ul id="form2" class="nav">
 									<li class="nav-item">
 										<label for="name2">Choose a name:</label>
 										<input type="text" id="name2" placeholder="character's name">
@@ -144,7 +159,7 @@
 										</button>
 									</li>
 								</ul>
-								<table class="table table-sm table-bordered hide">
+								<table class="table table-sm table-bordered hide" id="table2">
 									<thead>
 										<tr>
 											<th>
@@ -160,31 +175,42 @@
 									</thead>
 									<tbody>
 										<tr>
+											<td id="tdname2">
+
+											</td>
+											<td id="tditem2">
+
+											</td>
+											<td id="tdrace2">
+
+											</td>
+										</tr>
+										<tr>
 											<td>
 
 											</td>
-											<td>
+											<td id="tditemdesc2">
 
 											</td>
-											<td>
+											<td id="tdracedesc2">
 
 											</td>
 										</tr>
 									</tbody>
 								</table>
-								<ul class="nav">
+								<ul id="btn2" class="nav hide">
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary add-damage2" id="hit2">
+										<button type="button" class="btn btn-primary add-damage2 actbtn2" id="hit2" disabled>
 											Hit
 										</button>
 									</li>
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="heal2">
+										<button type="button" class="btn btn-primary actbtn2" id="heal2" disabled>
 											Heal
 										</button>
 									</li>
 									<li class="nav-item">
-										<button type="button" class="btn btn-primary" id="yield2">
+										<button type="button" class="btn btn-primary actbtn2" id="yield2" disabled>
 											Yield
 										</button>
 									</li>
