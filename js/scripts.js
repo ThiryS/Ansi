@@ -291,13 +291,7 @@
     document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
   });
 
-  function hasDodge(obj1) {
-    let random = Math.floor((Math.random() * 100) + 1);
-    if (random <= obj1.bootsdodge) {
-      return true;
-    }
-    return false;
-  }
+  
   function atttwi(obj1) {
     let random = Math.floor((Math.random() * 100) + 1);
     if (random <= obj1.bowatttwi) {
@@ -315,7 +309,7 @@
   }
   function hit(obj1, obj2){
     let randomDamage = Math.floor(Math.random() * (obj1.maxDamage - obj1.min + 1)) + obj1.min;
-    if (hasDodge(obj2)) {
+    if (obj2.hasDodge()) {
       randomDamage = 0;
       addMsgLog(`${obj2.name} dodged`);
     }

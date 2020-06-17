@@ -33,9 +33,15 @@ class Person {
         
     }
     
-    
   }
-
+  Person.prototype.hasDodge = function(){
+    let random = Math.floor((Math.random() * 100) + 1);
+    if (random <= this.bootsdodge) {
+      return true;
+    }
+    return false;
+  
+  };
   const sword = {item:"Sword", desc:"30% more damage"};
   const boots = {item:"Boots", desc:"30% chance to dodge an attack"};
   const staff = {item:"Staff", desc:"20% increase in healing"};
