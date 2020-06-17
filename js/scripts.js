@@ -79,6 +79,7 @@
     document.getElementById("tdrace1").innerHTML = perso1.race.item;
     document.getElementById("tditemdesc1").innerHTML = perso1.item.desc;
     document.getElementById("tdracedesc1").innerHTML = perso1.race.desc;
+    
     if (
       document.getElementById("validBtn1").classList.contains("btn-success") &&
       document.getElementById("validBtn2").classList.contains("btn-success")
@@ -241,7 +242,7 @@
     health.value = hit(perso2,perso1);
     document.getElementById("health").textContent = health.value;
     document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
-    if (perso1.currenthealth === 0) {
+    if (perso1.currenthealth <= 0) {
       alert(`${perso1.name} has no more life ${perso2.name} won! The game will restart`)
       window.location.reload(false); 
     }
