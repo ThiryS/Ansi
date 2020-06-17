@@ -13,7 +13,11 @@ class Person {
         this.resistance = 1;
         this.boostDamage = 1;
         this.boostHeal = 1;
-  
+        this.bowatttwi = 0;
+        this.bootsdodge = 1;
+        
+        
+
         this.heal = function () {  };
   
         this.damage = function () {
@@ -25,6 +29,7 @@ class Person {
         this.displayChar = function () {
             return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
         };
+        
         
     }
     

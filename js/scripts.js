@@ -68,6 +68,12 @@
     if (perso1.item.item === "Staff") {
       perso1.boostHeal = perso1.boostHeal * 1.2;
     }
+    if (perso1.item.item === "Boots") {
+      perso1.bootsdodge = perso1.bootsdodge + 29;
+    }
+    if (perso1.item.item === "Bow") {
+      perso1.bowatttwi = perso1.bowatttwi + 30;
+    }
     document.getElementById("validBtn1").classList.add("btn-success");
     document.getElementById("validBtn1").classList.remove("btn-primary");
     document.getElementById("form1").classList.add("hide");
@@ -163,6 +169,12 @@
     if (perso2.item.item === "Staff") {
     perso2.boostHeal = perso2.boostHeal * 1.2;
     }
+    if (perso2.item.item === "Boots") {
+      perso2.bootsdodge = perso2.bootsdodge + 29;
+    }
+    if (perso2.item.item === "Bow") {
+      perso2.bowatttwi = perso2.bowatttwi + 30;
+    }
     document.getElementById("validBtn2").classList.add("btn-success");
     document.getElementById("validBtn2").classList.remove("btn-primary");
     document.getElementById("form2").classList.add("hide");
@@ -241,7 +253,12 @@
     health.value = hit(perso2,perso1);
     document.getElementById("health").textContent = health.value;
     document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
-    if (perso1.currenthealth === 0) {
+    if (atttwi(perso2)) {
+      health.value = hit(perso2,perso1);
+      document.getElementById("health").textContent = health.value;
+      document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
+    }
+    if (perso1.currenthealth <= 0) {
       alert(`${perso1.name} has no more life ${perso2.name} won! The game will restart`)
       window.location.reload(false); 
     }
@@ -251,7 +268,12 @@
     health2.value = hit(perso1,perso2);
     document.getElementById("health2").textContent = health.value;
     document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
-    if (perso2.currenthealth === 0) {
+    if (atttwi(perso1)) {
+      health2.value = hit(perso1,perso2);
+      document.getElementById("health2").textContent = health.value;
+      document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
+    }
+    if (perso2.currenthealth <= 0) {
       alert(`${perso2.name} has no more life ${perso1.name} won! The game will restart`)
       window.location.reload(false); 
     }
@@ -269,6 +291,22 @@
     document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
   });
 
+  function hasDodge(obj1) {
+    let random = Math.floor((Math.random() * 100) + 1);
+    if (random <= obj1.bootsdodge) {
+      return true;
+    }
+    return false;
+  }
+  function atttwi(obj1) {
+    let random = Math.floor((Math.random() * 100) + 1);
+    if (random <= obj1.bowatttwi) {
+      addMsgLog("Double attack!");
+      return true;
+    }
+    return false;
+  }
+
   function addMsgLog(msg){
     let e = document.getElementById("log");
     let li = document.createElement('li');
@@ -277,8 +315,12 @@
   }
   function hit(obj1, obj2){
     let randomDamage = Math.floor(Math.random() * (obj1.maxDamage - obj1.min + 1)) + obj1.min;
+    if (hasDodge(obj2)) {
+      randomDamage = 0;
+      addMsgLog(`${obj2.name} dodged`);
+    }
     obj2.currenthealth = obj2.currenthealth - Math.round(randomDamage * obj2.resistance);
-    addMsgLog(`${obj2.name} was damaged by ${obj1.name} from ${Math.round(randomDamage * obj2.resistance)} damages`)
+    addMsgLog(`${obj2.name} was damaged by ${obj1.name} from ${Math.round(randomDamage * obj2.resistance)} damages`);
     return obj2.currenthealth;
   }
   function heal(obj1){
@@ -304,7 +346,7 @@
       addMsgLog(`${obj1.name} stole life from ${obj2.name} : ${lifesteal} but life of ${obj1.name} is full`);
     } 
     
-    
+   
     
   }
 })();
