@@ -62,6 +62,9 @@
     if (perso1.race.item === "Humans") {
       perso1.resistance = perso1.resistance * 0.8;
     }
+    if (perso1.race.item === "Elves") {
+      perso1.reflect = perso1.reflect + 30;
+    }
     if (perso1.item.item === "Sword") {
       perso1.boostDamage = perso1.boostDamage * 1.3;
     }
@@ -85,6 +88,7 @@
     document.getElementById("tdrace1").innerHTML = perso1.race.item;
     document.getElementById("tditemdesc1").innerHTML = perso1.item.desc;
     document.getElementById("tdracedesc1").innerHTML = perso1.race.desc;
+    document.getElementById('tdImg').src =perso1.race.newImg ;
     if (
       document.getElementById("validBtn1").classList.contains("btn-success") &&
       document.getElementById("validBtn2").classList.contains("btn-success")
@@ -163,6 +167,9 @@
     if (perso2.race.item === "Humans") {
         perso2.resistance = perso2.resistance * 0.8;
     }
+    if (perso2.race.item === "Elves") {
+      perso2.reflect = perso2.reflect + 30;
+    }
     if (perso2.item.item === "Sword") {
       perso2.boostDamage = perso2.boostDamage * 1.3;
     }
@@ -186,6 +193,7 @@
     document.getElementById("tdrace2").innerHTML = perso2.race.item;
     document.getElementById("tditemdesc2").innerHTML = perso2.item.desc;
     document.getElementById("tdracedesc2").innerHTML = perso2.race.desc;
+    document.getElementById('tdImg2').src =perso2.race.newImg ;
     if (
       document.getElementById("validBtn1").classList.contains("btn-success") &&
       document.getElementById("validBtn2").classList.contains("btn-success")
@@ -214,14 +222,7 @@
       document.getElementById("yield2").disabled = false;
       if (perso2.race.item === 'Vampires') {
         lifesteal(perso2,perso1);
-        let health1 = document.getElementById("health");
-        health1.value = perso1.currenthealth;
-        let health2 = document.getElementById("health2");
-        health2.value = perso2.currenthealth;
-        document.getElementById("health2").textContent = perso2.currenthealth;
-        document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
-        document.getElementById("health").textContent = perso1.currenthealth;
-        document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
+        updLifeBox(perso1,perso2);
       }
     });
   });
@@ -236,62 +237,72 @@
       document.getElementById("yield2").disabled = true;
       if (perso1.race.item === 'Vampires') {
         lifesteal(perso1,perso2);
-        let health1 = document.getElementById("health");
-        health1.value = perso1.currenthealth;
-        let health2 = document.getElementById("health2");
-        health2.value = perso2.currenthealth;
-        document.getElementById("health2").textContent = health2.value;
-        document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
-        document.getElementById("health").textContent = health1.value;
-        document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
+        updLifeBox(perso1,perso2);
       }
     });
   });
 
   document.getElementById("hit2").addEventListener("click", function () {
-    let health = document.getElementById("health");
-    health.value = hit(perso2,perso1);
-    document.getElementById("health").textContent = health.value;
-    document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
     if (atttwi(perso2)) {
-      health.value = hit(perso2,perso1);
-      document.getElementById("health").textContent = health.value;
-      document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
+      hit(perso2,perso1);
+      updLifeBox(perso1,perso2);
+      
     }
+    hit(perso2,perso1);
+    updLifeBox(perso1,perso2);
     if (perso1.currenthealth <= 0) {
       alert(`${perso1.name} has no more life ${perso2.name} won! The game will restart`)
       window.location.reload(false); 
-    }
-  });
-  document.getElementById("hit").addEventListener("click", function () {
-    let health2 = document.getElementById("health2");
-    health2.value = hit(perso1,perso2);
-    document.getElementById("health2").textContent = health.value;
-    document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
-    if (atttwi(perso1)) {
-      health2.value = hit(perso1,perso2);
-      document.getElementById("health2").textContent = health.value;
-      document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
     }
     if (perso2.currenthealth <= 0) {
       alert(`${perso2.name} has no more life ${perso1.name} won! The game will restart`)
       window.location.reload(false); 
     }
   });
+  document.getElementById("hit").addEventListener("click", function () {
+    if (atttwi(perso1)) {
+      hit(perso1,perso2);
+      updLifeBox(perso1,perso2);
+    }
+    hit(perso1,perso2);
+    updLifeBox(perso1,perso2);
+    if (perso2.currenthealth <= 0) {
+      alert(`${perso2.name} has no more life ${perso1.name} won! The game will restart`)
+      window.location.reload(false); 
+    }
+    if (perso1.currenthealth <= 0) {
+      alert(`${perso2.name} has no more life ${perso1.name} won! The game will restart`)
+      window.location.reload(false); 
+    }
+  });
   document.getElementById("heal").addEventListener("click", function () {
-    let health = document.getElementById("health");
-    health.value = heal(perso1);
-    document.getElementById("health").textContent = health.value;
-    document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
+    heal(perso1);
+    updLifeBox(perso1,perso2);
   });
   document.getElementById("heal2").addEventListener("click", function () {
-    let health2 = document.getElementById("health2");
-    health2.value = heal(perso2);
-    document.getElementById("health2").textContent = health.value;
-    document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
+    heal(perso2);
+    updLifeBox(perso1,perso2);
+  });
+  document.getElementById("yield").addEventListener("click", function () {
+    perso1.currenthealth = 0;
+    alert(`${perso1.name} gave up, he has no more life ${perso2.name} won! The game will restart`)
+    window.location.reload(false); 
+  });
+  document.getElementById("yield2").addEventListener("click", function () {
+    perso2.currenthealth = 0;
+    alert(`${perso2.name} gave up, he has no more life ${perso1.name} won! The game will restart`)
+    window.location.reload(false); 
   });
 
-  
+  function updLifeBox(perso1,perso2) {
+    document.getElementById("health").textContent = perso1.currenthealth;
+    document.getElementById("health").value = perso1.currenthealth;
+    document.getElementById("life1").textContent = `${document.getElementById("health").value}/${document.getElementById("health").max}`;
+    document.getElementById("health2").textContent = perso2.currenthealth;
+    document.getElementById("health2").value = perso2.currenthealth;
+    document.getElementById("life2").textContent = `${document.getElementById("health2").value}/${document.getElementById("health2").max}`;
+  }
+
   function atttwi(obj1) {
     let random = Math.floor((Math.random() * 100) + 1);
     if (random <= obj1.bowatttwi) {
@@ -300,23 +311,47 @@
     }
     return false;
   }
+  function hasReflect(obj1) {
+    let random = Math.floor((Math.random() * 100) + 1);
+    if (random <= obj1.reflect) {
+      return true;
+    }
+    return false;
+  }
+
+  function gotoBottom(id){
+    var element = document.getElementById(id);
+    element.scrollTop = element.scrollHeight - element.clientHeight;
+ }
 
   function addMsgLog(msg){
     let e = document.getElementById("log");
     let li = document.createElement('li');
+    let id = "scrollbox";
     e.appendChild(li);
     li.innerHTML=msg;
+    gotoBottom(id);
   }
   function hit(obj1, obj2){
     let randomDamage = Math.floor(Math.random() * (obj1.maxDamage - obj1.min + 1)) + obj1.min;
     if (obj2.hasDodge()) {
       randomDamage = 0;
       addMsgLog(`${obj2.name} dodged`);
+      obj2.currenthealth = obj2.currenthealth - Math.round(randomDamage * obj2.resistance);
+      addMsgLog(`${obj2.name} was damaged by ${obj1.name} from ${Math.round(randomDamage * obj2.resistance)} damages`);
+    }else if (hasReflect(obj2)) {
+      randomDamage = randomDamage / 2;
+      addMsgLog(`${obj2.name} reflects!`);
+      addMsgLog(`${obj1.name} was damaged by the reflection from ${Math.round(randomDamage * obj1.resistance)} damages`);
+      obj1.currenthealth -= (Math.round(randomDamage * obj1.resistance));
+    } else {
+      obj2.currenthealth = obj2.currenthealth - Math.round(randomDamage * obj2.resistance);
+      addMsgLog(`${obj2.name} was damaged by ${obj1.name} from ${Math.round(randomDamage * obj2.resistance)} damages`);
     }
-    obj2.currenthealth = obj2.currenthealth - Math.round(randomDamage * obj2.resistance);
-    addMsgLog(`${obj2.name} was damaged by ${obj1.name} from ${Math.round(randomDamage * obj2.resistance)} damages`);
-    return obj2.currenthealth;
   }
+    
+    
+  
   function heal(obj1){
     let randomHeal = Math.floor(Math.random() * (obj1.maxHealing - obj1.min + 1)) + obj1.min;
     if ((obj1.currenthealth + Math.round(randomHeal * obj1.boostHeal)) < obj1.maxHealth) {
@@ -326,7 +361,6 @@
       obj1.currenthealth = obj1.maxHealth;
       addMsgLog(`${obj1.name} was heald by ${Math.round(randomHeal * obj1.boostHeal)} but his life is full`);
     }
-    return obj1.currenthealth;
   }
   function lifesteal(obj1, obj2){
     let lifesteal = Math.round(obj2.currenthealth / 10 );

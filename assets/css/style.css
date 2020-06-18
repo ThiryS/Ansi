@@ -1,1 +1,25 @@
-# Empty CSS file for your own CSS
+.progress-bar-green {
+    background-color: green !important;
+}
+.hide{
+  display: none;
+}
+
+.scroll{
+  height: 200px;
+  overflow: auto;
+  padding: 0rem 0rem;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+ #validBtn1, #validBtn2{
+ width: 87px;
+ margin-top: 15px
+}
+
+#name1, #name2 {
+  width:200px ;
+}
