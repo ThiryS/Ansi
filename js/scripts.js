@@ -1,6 +1,4 @@
 (function () {
-  // to get the value of an input: document.getElementById("element-id").value
-
   //perso1
   document.getElementById("validBtn1").addEventListener("click", function () {
     let race = document.getElementById("races1");
@@ -89,6 +87,7 @@
     document.getElementById("tditemdesc1").innerHTML = perso1.item.desc;
     document.getElementById("tdracedesc1").innerHTML = perso1.race.desc;
     document.getElementById('tdImg').src =perso1.race.newImg ;
+    addMsgLog(`I am ${perso1.name}, a ${perso1.race.item}, I wield a ${perso1.item.item}, my total health point are ${perso1.maxHealth}`);
     if (
       document.getElementById("validBtn1").classList.contains("btn-success") &&
       document.getElementById("validBtn2").classList.contains("btn-success")
@@ -97,13 +96,15 @@
         document.getElementById("hit").disabled = false;
         document.getElementById("heal").disabled = false;
         document.getElementById("yield").disabled = false;
+        addMsgLog(`The first move belongs to ${perso1.name}`);
       } else {
         document.getElementById("hit2").disabled = false;
         document.getElementById("heal2").disabled = false;
         document.getElementById("yield2").disabled = false;
+        addMsgLog(`The first move belongs to ${perso2.name}`);
       }
     }
-    addMsgLog(`I am ${perso1.name}, a ${perso1.race.item}, I wield a ${perso1.item.item}, my total health point are ${perso1.maxHealth}`);
+   
   });
 
   //perso2
@@ -177,7 +178,7 @@
     perso2.boostHeal = perso2.boostHeal * 1.2;
     }
     if (perso2.item.item === "Boots") {
-      perso2.bootsdodge = perso2.bootsdodge + 29;
+      perso2.bootsdodge = perso2.bootsdodge + 30;
     }
     if (perso2.item.item === "Bow") {
       perso2.bowatttwi = perso2.bowatttwi + 30;
@@ -194,6 +195,7 @@
     document.getElementById("tditemdesc2").innerHTML = perso2.item.desc;
     document.getElementById("tdracedesc2").innerHTML = perso2.race.desc;
     document.getElementById('tdImg2').src =perso2.race.newImg ;
+    addMsgLog(`I am ${perso2.name}, a ${perso2.race.item}, I wield a ${perso2.item.item}, my total health point are ${perso2.maxHealth}`);
     if (
       document.getElementById("validBtn1").classList.contains("btn-success") &&
       document.getElementById("validBtn2").classList.contains("btn-success")
@@ -202,13 +204,15 @@
         document.getElementById("hit").disabled = false;
         document.getElementById("heal").disabled = false;
         document.getElementById("yield").disabled = false;
+        addMsgLog(`The first move belongs to ${perso1.name}`);
       } else {
         document.getElementById("hit2").disabled = false;
         document.getElementById("heal2").disabled = false;
         document.getElementById("yield2").disabled = false;
+        addMsgLog(`The first move belongs to ${perso2.name}`);
       }
     }
-    addMsgLog(`I am ${perso2.name}, a ${perso2.race.item}, I wield a ${perso2.item.item}, my total health point are ${perso2.maxHealth}`);
+    
   });
 
   var allbtn = document.querySelectorAll(".actbtn");
@@ -243,13 +247,13 @@
   });
 
   document.getElementById("hit2").addEventListener("click", function () {
+    hit(perso2,perso1);
+    updLifeBox(perso1,perso2);
     if (atttwi(perso2)) {
       hit(perso2,perso1);
       updLifeBox(perso1,perso2);
       
     }
-    hit(perso2,perso1);
-    updLifeBox(perso1,perso2);
     if (perso1.currenthealth <= 0) {
       alert(`${perso1.name} has no more life ${perso2.name} won! The game will restart`)
       window.location.reload(false); 
@@ -260,12 +264,12 @@
     }
   });
   document.getElementById("hit").addEventListener("click", function () {
+    hit(perso1,perso2);
+    updLifeBox(perso1,perso2);
     if (atttwi(perso1)) {
       hit(perso1,perso2);
       updLifeBox(perso1,perso2);
     }
-    hit(perso1,perso2);
-    updLifeBox(perso1,perso2);
     if (perso2.currenthealth <= 0) {
       alert(`${perso2.name} has no more life ${perso1.name} won! The game will restart`)
       window.location.reload(false); 
