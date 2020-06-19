@@ -1,3 +1,8 @@
+body {
+  background-image: url('../fonts/fond-ecran.jpg');
+}
+
+
 .progress-bar-green {
     background-color: green !important;
 }
@@ -13,14 +18,8 @@
  width: 87px;
  margin-top: 15px
 }
-label {
-  margin-left: ;
-}
+
 #name1, #name2 {
   width:200px ;
 }
 
-/* .background {
-  background-image: url(../fonts/image.ico);
-  background-repeat: no-repeat;
-} */

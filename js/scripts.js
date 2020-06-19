@@ -79,6 +79,16 @@
     document.getElementById("tdrace1").innerHTML = perso1.race.item;
     document.getElementById("tditemdesc1").innerHTML = perso1.item.desc;
     document.getElementById("tdracedesc1").innerHTML = perso1.race.desc;
+
+    
+
+    document.getElementById('tdImg').src =perso1.race.newImg ;
+    
+    
+
+  
+               
+    
     
     if (
       document.getElementById("validBtn1").classList.contains("btn-success") &&
@@ -175,6 +185,7 @@
     document.getElementById("tdrace2").innerHTML = perso2.race.item;
     document.getElementById("tditemdesc2").innerHTML = perso2.item.desc;
     document.getElementById("tdracedesc2").innerHTML = perso2.race.desc;
+    document.getElementById('tdImg2').src =perso2.race.newImg ;
     if (
       document.getElementById("validBtn1").classList.contains("btn-success") &&
       document.getElementById("validBtn2").classList.contains("btn-success")
