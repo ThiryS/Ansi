@@ -12,9 +12,9 @@
 
  ### Made with 
 
- [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
- [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
- [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+ [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://eloquentjavascript.net/)
+ [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://developer.mozilla.org/fr/docs/Web/HTML)
+ [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://developer.mozilla.org/fr/docs/Web/CSS)
  ***
 
 ### STORY TELLING
@@ -61,7 +61,7 @@ You hold magical powers to exterminate your opponent in a final fight.
 ![](./assets/fonts/fond-ecran.jpg)                                         
 ***
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-swag.svg)](https://forthebadge.com) 
+[![forthebadge](https://forthebadge.com/images/badges/built-with-swag.svg)](https://fr.wiktionary.org/wiki/swag) 
   
   ### By Team ANSI
 
