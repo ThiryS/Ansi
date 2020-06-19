@@ -3,7 +3,7 @@
 
  ### PROJECT
 
- Create a RGP game as part of the [Becode](https://becode.org/fr/) in Liège, Belgium.
+ Create a RGP game as part of the [Becode](https://becode.org/fr/) training in Liège, Belgium.
 
  Alotted time: 4 days.
 
@@ -15,6 +15,8 @@
  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://eloquentjavascript.net/)
  [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://developer.mozilla.org/fr/docs/Web/HTML)
  [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://developer.mozilla.org/fr/docs/Web/CSS)
+
+ Aperçu: ![War Of Magic]()
  ***
 
 ### STORY TELLING
