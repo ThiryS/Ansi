@@ -16,7 +16,7 @@
  [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://developer.mozilla.org/fr/docs/Web/HTML)
  [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://developer.mozilla.org/fr/docs/Web/CSS)
 
- Aperçu: ![War Of Magic]()
+ 
  ***
 
 ### STORY TELLING
